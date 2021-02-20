@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import Container from 'react-bootstrap/Container'
 
 import styled from "styled-components";
 const Aboutstyle = styled.div`
@@ -48,9 +48,9 @@ class About extends Component {
   render() {
     return (
       <Aboutstyle>
-        <div style={{ backgroundColor: "#000" }}>
+        <div style={{ backgroundColor: "#fff" }}>
           <Container>
-            <div className="about-con text-light">
+            <div className="about-con text-dark">
               <h1 className="text-uppercase m-3">DESCRIPTION </h1>
               <p className="m-3">
                 SpaceX, in full Space Exploration Technologies Corporation,

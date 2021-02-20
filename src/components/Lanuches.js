@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 import Background from "../img/lanuch-banner.jpg";
 
 import styled from "styled-components";

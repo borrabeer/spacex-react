@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 import Background from "../img/banner.jpg";
-import Background1 from "../img/banner.png";
 
 import styled from "styled-components";
 const Bannerstyle = styled.div`

@@ -17,14 +17,19 @@ import Lanuch from "./components/Lanuches";
 // FOOTER
 import Footer from "./components/Footer";
 
+// PAGES
+import Rocketpage from "./pages/Rocket-page";
+import Rocketdetail from "./pages/Rocket-detail";
 const App = () => (
   <div>
     <Navs />
-    <Banner />
+    {/* <Banner />
     <About />
     <Rocket />
     <Elon />
-    <Lanuch />
+    <Lanuch /> */}
+    {/* <Rocketpage /> */}
+    <Rocketdetail />
     <Footer />
   </div>
 );

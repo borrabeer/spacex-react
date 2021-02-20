@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import Container from 'react-bootstrap/Container'
 
 import styled from "styled-components";
 const Footerstyle = styled.div`
