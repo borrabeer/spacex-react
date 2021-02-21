@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory, useParams } from "react-router-dom";
+import ReactPlayer from "react-player";
 const Launchstyle = styled.div`
   .launchdetail-con {
     display: flex;
@@ -75,7 +76,6 @@ const Launchesdetail = (props) => {
     const detail = await axios.get(
       `https://api.spacexdata.com/v3/launches/${flight_number}`
     );
-    console.log(flight_number)
     setDetail(detail.data);
   }, []);
   return (
@@ -85,11 +85,7 @@ const Launchesdetail = (props) => {
           <Container>
             <Row>
               <Col xs={12} md={6} className="content-l my-3">
-                <img
-                  src={
-                    detail.flickr_images ? detail.flickr_images[0] : Background
-                  }
-                />
+                <ReactPlayer url={detail.link ? detail.link.video_link : ""} />
               </Col>
               <Col xs={12} md={6} className="content-r my-3">
                 <h1 className="text-uppercase font-weight-bolder">{detail.mission_name}</h1>

@@ -145,7 +145,7 @@ const Launchpage = (props) => {
                         <div
                           className="banner-card"
                           style={{
-                            backgroundImage: `url(${launch.flickr_images ? launch.flickr_images[0] : Background})`,
+                            backgroundImage: `url(${launch.links.mission_patch ? launch.links.mission_patch_small : Background})`,
                             backgroundSize: "cover",
                           }}
                         ></div>
