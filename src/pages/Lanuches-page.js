@@ -8,6 +8,8 @@ import Background from "../img/launch.jpg";
 import axios from "axios";
 import styled from "styled-components";
 import { Link, useRouteMatch } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
 const Lanuchstyle = styled.div`
   .banner-bg {
     height: 80vh;
@@ -90,7 +92,42 @@ const Lanuchpage = (props) => {
         </Container>
       </Jumbotron>
 
-      <Container>
+      <Container fluid>
+        <Card className="p-3 rounded mt-5 mx-3" border="dark">
+          <Form>
+            <Form.Row>
+              <Form.Group as={Col} xs={12} md={4} controlId="formGridState">
+                <Form.Label>
+                  <h4>Launch year</h4>
+                </Form.Label>
+                <Form.Control as="select" defaultValue="Choose...">
+                  <option>Choose...</option>
+                  <option>...</option>
+                </Form.Control>
+              </Form.Group>
+
+              <Form.Group as={Col} xs={12} md={4} controlId="formGridState">
+                <Form.Label>
+                  <h4>Rocket name</h4>
+                </Form.Label>
+                <Form.Control as="select" defaultValue="Choose...">
+                  <option>Choose...</option>
+                  <option>...</option>
+                </Form.Control>
+              </Form.Group>
+
+              <Form.Group as={Col} xs={12} md={4} controlId="formGridState">
+                <Form.Label>
+                  <h4>Launch success</h4>
+                </Form.Label>
+                <Form.Control as="select" defaultValue="Choose...">
+                  <option>Choose...</option>
+                  <option>...</option>
+                </Form.Control>
+              </Form.Group>
+            </Form.Row>
+          </Form>
+        </Card>
         <div className="lanuch-card">
           <Container>
             <Row>

@@ -90,7 +90,7 @@ const Rocketpage = (props) => {
         </Container>
       </Jumbotron>
 
-      <Container>
+      <Container fluid>
         <div className="rocket-card">
           <Container>
             <Row>
