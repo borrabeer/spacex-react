@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import Background from "../img/banner.jpg";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 const Bannerstyle = styled.div`
@@ -85,23 +86,21 @@ class Banner extends Component {
               <Col md={4}>
                 <div className="banner-con text-light">
                   <h1 className="text-uppercase m-3">SpaceX public API</h1>
-                  <p className="m-3">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
-                  </p>
                   <div className="button-sec button-mb mt-3 ">
-                    <Button
-                      className="m-3 p-3 btn btn-outline"
-                      size="lg"
-                    >
-                      ROCKET
-                    </Button>
-                    <Button
-                      className="m-3 p-3 btn btn-outline"
-                      size="lg"
-                    >
-                      LAUNCHES
-                    </Button>
+                    <Link to="/rockets">
+                      <Button className="m-3 p-3 btn btn-outline" size="lg">
+                        ROCKET
+                      </Button>
+                    </Link>
+                    <Link to="/launches">
+                      <Button
+                        className="m-3 p-3 btn btn-outline"
+                        size="lg"
+                        to="/launches"
+                      >
+                        LAUNCHES
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </Col>

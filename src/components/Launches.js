@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 import Background from "../img/launch-banner.jpg";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 const Launchstyle = styled.div`
@@ -82,14 +83,12 @@ class Launch extends Component {
           <Container>
             <div className="Launch-con text-light">
               <h1 className="text-uppercase">Launches</h1>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
-              </p>
               <div className="button-sec button-mb mt-3 ">
-                <Button className="p-3 btn btn-outline" size="lg">
-                  LEARN MORE
-                </Button>
+                <Link to="/launches">
+                  <Button className="p-3 btn btn-outline" size="lg">
+                    LEARN MORE
+                  </Button>
+                </Link>
               </div>
             </div>
           </Container>

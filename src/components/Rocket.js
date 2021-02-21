@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import Background from "../img/rocket-banner.jpg";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 const Rocketstyle = styled.div`
@@ -81,14 +82,12 @@ class Rocket extends Component {
           <Container>
             <div className="Rocket-con text-light">
               <h1 className="text-uppercase">ROCKETS</h1>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
-              </p>
               <div className="button-sec button-mb mt-3 ">
-                <Button className="p-3 btn btn-outline" size="lg">
-                  LEARN MORE
-                </Button>
+                <Link to="/rockets">
+                  <Button className="p-3 btn btn-outline" size="lg">
+                    LEARN MORE
+                  </Button>
+                </Link>
               </div>
             </div>
           </Container>
