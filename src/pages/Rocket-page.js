@@ -102,6 +102,7 @@ const Rocketpage = (props) => {
                       xs={12}
                       md={6}
                       lg={4}
+                      key={rocket.id}
                     >
                       <div className="bg-white rounded-lg shadow-lg overflow-hidden d-flex flex-column h-100">
                         <div

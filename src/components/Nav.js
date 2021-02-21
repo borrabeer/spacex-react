@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import styled from "styled-components";
-import { Route, NavLink, Switch } from "react-router-dom";
-
-// PAGES
-import Home from "../pages/Home";
-import Rocketpage from "../pages/Rocket-page";
-import Rocketdetail from "../pages/Rocket-detail";
-import Launchespage from "../pages/Launches-page";
-import Launchesdetail from "../pages/Launches-detail";
+import { NavLink } from "react-router-dom";
 
 const Navbarstyle = styled.div`
   .inactive {
@@ -53,7 +46,7 @@ const Navs = () => {
                 activeClassName="active"
                 to="/rockets"
               >
-                <h5>ROCKET</h5>
+                <h5>ROCKETS</h5>
               </NavLink>
               <NavLink
                 exact
@@ -61,19 +54,12 @@ const Navs = () => {
                 activeClassName="active"
                 to="/launches"
               >
-                <h5>LAUNCH</h5>
+                <h5>LAUNCHES</h5>
               </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Switch>
-        <Route exact={true} path="/" component={Home} />
-        <Route path="/rockets" component={Rocketpage} />
-        <Route path="/rockets/:rocket_id" component={Rocketdetail} />
-        <Route path="/launches" component={Launchespage} />
-        <Route path="/launches/:flight_number" component={Launchesdetail} />
-      </Switch>
     </Navbarstyle>
   );
 };

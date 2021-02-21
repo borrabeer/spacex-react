@@ -71,12 +71,117 @@ const Launchstyle = styled.div`
 
 const Launchpage = (props) => {
   const [launchs, setLaunchs] = useState([]);
+  const [filterLaunchs, setFilterLaunchs] = useState([]);
+  const [filterBySuccess, setFilterBySuccess] = useState("all");
+  const [filterByName, setFilterByName] = useState("all");
+  const [filterByYear, setFilterByYear] = useState("all");
   let { path, url } = useRouteMatch();
   useEffect(async () => {
     const launchs = await axios.get("https://api.spacexdata.com/v3/launches");
-    console.log(launchs.data)
     setLaunchs(launchs.data);
+    setFilterLaunchs(launchs.data);
   }, []);
+  const filterSuccess = (option) => {
+    if (option !== "all") {
+      if (filterByName !== "all" || filterByYear !== "all") {
+        const filter = launchs.filter(
+          (data) =>
+            String(data.launch_success) === option &&
+            (filterByName !== "all"
+              ? data.rocket.rocket_id === filterByName
+              : true) &&
+            (filterByYear !== "all" ? data.launch_year === filterByYear : true)
+        );
+        setFilterLaunchs(filter);
+      } else {
+        const filter = launchs.filter(
+          (data) => String(data.launch_success) === option
+        );
+        setFilterLaunchs(filter);
+      }
+    } else {
+      if (filterByName !== "all" || filterByYear !== "all") {
+        const filter = launchs.filter(
+          (data) =>
+            (filterByName !== "all"
+              ? data.rocket.rocket_id === filterByName
+              : true) &&
+            (filterByYear !== "all" ? data.launch_year === filterByYear : true)
+        );
+        setFilterLaunchs(filter);
+      } else {
+        setFilterLaunchs(launchs);
+      }
+    }
+  };
+  const filterName = (option) => {
+    if (option !== "all") {
+      if (filterBySuccess !== "all" || filterByYear !== "all") {
+        const filter = launchs.filter(
+          (data) =>
+            data.rocket.rocket_id === option &&
+            (filterBySuccess !== "all"
+              ? String(data.launch_success) === filterBySuccess
+              : true) &&
+            (filterByYear !== "all" ? data.launch_year === filterByYear : true)
+        );
+        setFilterLaunchs(filter);
+      } else {
+        const filter = launchs.filter(
+          (data) => data.rocket.rocket_id === option
+        );
+        setFilterLaunchs(filter);
+      }
+    } else {
+      if (filterBySuccess !== "all" || filterByYear !== "all") {
+        const filter = launchs.filter(
+          (data) =>
+            (filterBySuccess !== "all"
+              ? String(data.launch_success) === filterBySuccess
+              : true) &&
+            (filterByYear !== "all" ? data.launch_year === filterByYear : true)
+        );
+        setFilterLaunchs(filter);
+      } else {
+        setFilterLaunchs(launchs);
+      }
+    }
+  };
+  const filterYear = (option) => {
+    if (option !== "all") {
+      if (filterBySuccess !== "all" || filterByName !== "all") {
+        const filter = launchs.filter(
+          (data) =>
+            data.launch_year === option &&
+            (filterBySuccess !== "all"
+              ? String(data.launch_success) === filterBySuccess
+              : true) &&
+            (filterByName !== "all"
+              ? data.rocket.rocket_id === filterByName
+              : true)
+        );
+        setFilterLaunchs(filter);
+      } else {
+        const filter = launchs.filter((data) => data.launch_year === option);
+        setFilterLaunchs(filter);
+      }
+    } else {
+      if (filterBySuccess !== "all" || filterByName !== "all") {
+        const filter = launchs.filter(
+          (data) =>
+            (filterBySuccess !== "all"
+              ? String(data.launch_success) === filterBySuccess
+              : true) &&
+            (filterByName !== "all"
+              ? data.rocket.rocket_id === filterByName
+              : true)
+        );
+        setFilterLaunchs(filter);
+      } else {
+        setFilterLaunchs(launchs);
+      }
+    }
+  };
   return (
     <Launchstyle>
       <Jumbotron
@@ -101,9 +206,29 @@ const Launchpage = (props) => {
                 <Form.Label>
                   <h4>Launch year</h4>
                 </Form.Label>
-                <Form.Control as="select" defaultValue="Choose...">
-                  <option>Choose...</option>
-                  <option>...</option>
+                <Form.Control
+                  as="select"
+                  defaultValue="Choose..."
+                  onChange={(e) => {
+                    setFilterByYear(e.target.value);
+                    filterYear(e.target.value);
+                  }}
+                >
+                  <option value="all">Choose...</option>
+                  <option value="2006">2006</option>
+                  <option value="2007">2007</option>
+                  <option value="2008">2008</option>
+                  <option value="2009">2009</option>
+                  <option value="2010">2010</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
                 </Form.Control>
               </Form.Group>
 
@@ -111,9 +236,19 @@ const Launchpage = (props) => {
                 <Form.Label>
                   <h4>Rocket name</h4>
                 </Form.Label>
-                <Form.Control as="select" defaultValue="Choose...">
-                  <option>Choose...</option>
-                  <option>...</option>
+                <Form.Control
+                  as="select"
+                  defaultValue="Choose..."
+                  onChange={(e) => {
+                    setFilterByName(e.target.value);
+                    filterName(e.target.value);
+                  }}
+                >
+                  <option value="all">Choose...</option>
+                  <option value="falcon1">Falcon 1</option>
+                  <option value="falcon9">Falcon 9</option>
+                  <option value="falconheavy">Falcon Heavy</option>
+                  <option value="starship">Starship</option>
                 </Form.Control>
               </Form.Group>
 
@@ -121,9 +256,17 @@ const Launchpage = (props) => {
                 <Form.Label>
                   <h4>Launch success</h4>
                 </Form.Label>
-                <Form.Control as="select" defaultValue="Choose...">
-                  <option>Choose...</option>
-                  <option>...</option>
+                <Form.Control
+                  as="select"
+                  defaultValue={"all"}
+                  onChange={(e) => {
+                    setFilterBySuccess(e.target.value);
+                    filterSuccess(e.target.value);
+                  }}
+                >
+                  <option value="all">Choose...</option>
+                  <option value={false}>False</option>
+                  <option value={true}>True</option>
                 </Form.Control>
               </Form.Group>
             </Form.Row>
@@ -133,19 +276,24 @@ const Launchpage = (props) => {
           <Container>
             <Row>
               <div className="m-3 d-flex flex-wrap">
-                {launchs.map((launch) => {
+                {filterLaunchs.map((launch) => {
                   return (
                     <Col
                       className="w-100 p-3 d-flex flex-column"
                       xs={12}
                       md={6}
                       lg={4}
+                      key={launch.mission_name}
                     >
-                      <div className="bg-white rounded-lg shadow-lg overflow-hidden d-flex flex-column h-100" key={launch.flight_number}>
+                      <div className="bg-white rounded-lg shadow-lg overflow-hidden d-flex flex-column h-100">
                         <div
                           className="banner-card"
                           style={{
-                            backgroundImage: `url(${launch.links.mission_patch ? launch.links.mission_patch_small : Background})`,
+                            backgroundImage: `url(${
+                              launch.links.mission_patch
+                                ? launch.links.mission_patch_small
+                                : Background
+                            })`,
                             backgroundSize: "cover",
                           }}
                         ></div>
@@ -155,7 +303,9 @@ const Launchpage = (props) => {
                             <p>{launch.details}</p>
                           </div>
                           <hr />
-                          <Link to={{ pathname: `${url}/${launch.flight_number}` }}>
+                          <Link
+                            to={{ pathname: `${url}/${launch.flight_number}` }}
+                          >
                             <Button variant="outline-info">Read more..</Button>
                           </Link>
                         </div>
