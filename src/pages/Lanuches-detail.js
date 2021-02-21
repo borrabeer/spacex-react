@@ -4,13 +4,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Background from "../img/rocket.png";
-
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory, useParams } from "react-router-dom";
-const Rocketstyle = styled.div`
+const Lanuchstyle = styled.div`
   .container-cus {
     max-width: 1140px;
     margin: 0 auto;
@@ -24,7 +23,7 @@ const Rocketstyle = styled.div`
     background-position: center;
   }
 
-  .rocketdetail-con {
+  .lanuchdetail-con {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,11 +32,11 @@ const Rocketstyle = styled.div`
     height: 100vh;
   }
 
-  .rocketdetail-con > h1 {
+  .lanuchdetail-con > h1 {
     font-size: 7rem;
   }
 
-  .rocketdetail-con > p {
+  .lanuchdetail-con > p {
     font-size: 3rem;
   }
 
@@ -46,35 +45,35 @@ const Rocketstyle = styled.div`
   }
 
   @media screen and (max-width: 960px) {
-    .rocketdetail-con > h1 {
+    .lanuchdetail-con > h1 {
       font-size: 5rem;
     }
   }
 
   @media screen and (max-width: 768px) {
-    .rocketdetail-con > h1 {
+    .lanuchdetail-con > h1 {
       font-size: 4rem;
     }
 
-    .rocketdetail-con > p {
+    .lanuchdetail-con > p {
       font-size: 1.5rem;
     }
   }
 `;
 
-const Rocketdetail = (props) => {
+const Lanuchesdetail = (props) => {
   const [detail, setDetail] = useState({});
-  let { rocket_id } = useParams();
+  let { lanuch_id } = useParams();
   const history = useHistory();
   useEffect(async () => {
     const detail = await axios.get(
-      `https://api.spacexdata.com/v3/rockets/${rocket_id}`
+      `https://api.spacexdata.com/v3/lanuchs/${lanuch_id}`
     );
     setDetail(detail.data);
   }, []);
   return (
-    <Rocketstyle>
-      <div className="rocketdetail-con">
+    <Lanuchstyle>
+      <div className="lanuchdetail-con">
         <div className="container-cus">
           <Container>
             <Row>
@@ -87,13 +86,13 @@ const Rocketdetail = (props) => {
               </Col>
               <Col xs={12} md={6} className="content-r my-3">
                 <h1 className="text-uppercase font-weight-bolder">
-                  {detail.rocket_name}
+                  1
                 </h1>
-                <h3 className="text-uppercase">{detail.company}</h3>
+                <h3 className="text-uppercase">1</h3>
                 <h5 className="text-uppercase font-weight-light">
-                  {detail.country}
+                 1
                 </h5>
-                <p>{detail.description}</p>
+                <p>1</p>
               </Col>
             </Row>
             <Button
@@ -106,8 +105,8 @@ const Rocketdetail = (props) => {
           </Container>
         </div>
       </div>
-    </Rocketstyle>
+    </Lanuchstyle>
   );
 };
 
-export default Rocketdetail;
+export default Lanuchesdetail;

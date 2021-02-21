@@ -22,7 +22,7 @@ class Navs extends Component {
               <Nav.Link className="mx-3 text-dark" href="/rockets">
                 <h5>ROCKET</h5>
               </Nav.Link>
-              <Nav.Link className="mx-3 text-dark" href="#link">
+              <Nav.Link className="mx-3 text-dark" href="/lanuches">
                 <h5>LAUNCH</h5>
               </Nav.Link>
             </Nav>

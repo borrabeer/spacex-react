@@ -4,11 +4,11 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
-import Background from "../img/rocket.png";
+import Background from "../img/launch.jpg";
 import axios from "axios";
 import styled from "styled-components";
 import { Link, useRouteMatch } from "react-router-dom";
-const Rocketstyle = styled.div`
+const Lanuchstyle = styled.div`
   .banner-bg {
     height: 80vh;
     background-size: cover;
@@ -25,7 +25,7 @@ const Rocketstyle = styled.div`
     background-position: center;
   }
 
-  .rocketpage-con {
+  .lanuchpage-con {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,7 +34,7 @@ const Rocketstyle = styled.div`
     height: 80vh;
   }
 
-  .rocket-card {
+  .lanuch-card {
     padding: 5rem 0;
   }
 
@@ -42,40 +42,40 @@ const Rocketstyle = styled.div`
     margin: 0;
   }
 
-  .rocketpage-con > h1 {
+  .lanuchpage-con > h1 {
     font-size: 7rem;
   }
 
-  .rocketpage-con > p {
+  .lanuchpage-con > p {
     font-size: 3rem;
   }
 
   @media screen and (max-width: 960px) {
-    .rocketpage-con > h1 {
+    .lanuchpage-con > h1 {
       font-size: 5rem;
     }
   }
 
   @media screen and (max-width: 768px) {
-    .rocketpage-con > h1 {
+    .lanuchpage-con > h1 {
       font-size: 4rem;
     }
 
-    .rocketpage-con > p {
+    .lanuchpage-con > p {
       font-size: 1.5rem;
     }
   }
 `;
 
-const Rocketpage = (props) => {
-  const [rockets, setRockets] = useState([]);
+const Lanuchpage = (props) => {
+  const [lanuchs, setLanuchs] = useState([]);
   let { path, url } = useRouteMatch();
   useEffect(async () => {
-    const rockets = await axios.get("https://api.spacexdata.com/v3/rockets");
-    setRockets(rockets.data);
+    const lanuchs = await axios.get("https://api.spacexdata.com/v3/launches");
+    setLanuchs(lanuchs.data);
   }, []);
   return (
-    <Rocketstyle>
+    <Lanuchstyle>
       <Jumbotron
         fluid
         className="banner-bg"
@@ -84,18 +84,18 @@ const Rocketpage = (props) => {
         }}
       >
         <Container>
-          <div className="rocketpage-con text-light">
-            <h1>ROCKETS</h1>
+          <div className="lanuchpage-con text-light text-uppercase">
+            <h1>LAUNCHES</h1>
           </div>
         </Container>
       </Jumbotron>
 
       <Container>
-        <div className="rocket-card">
+        <div className="lanuch-card">
           <Container>
             <Row>
               <div className="m-3 d-flex flex-wrap">
-                {rockets.map((rocket) => {
+                {lanuchs.map((lanuch) => {
                   return (
                     <Col
                       className="w-100 p-3 d-flex flex-column"
@@ -107,17 +107,17 @@ const Rocketpage = (props) => {
                         <div
                           className="banner-card"
                           style={{
-                            backgroundImage: `url(${rocket.flickr_images[0]})`,
+                            //backgroundImage: `url(${})`,
                             backgroundSize: "cover",
                           }}
                         ></div>
                         <div className="p-4 d-flex flex-column">
-                          <h3 className="mb-4">{rocket.rocket_name}</h3>
+                          <h3 className="mb-4">title</h3>
                           <div className="mb-4 text-info d-flex">
-                            <p>{rocket.description}</p>
+                            <p>descrip</p>
                           </div>
                           <hr />
-                          <Link to={{ pathname: `${url}/${rocket.rocket_id}` }}>
+                          <Link to={{ pathname: `${url}/${lanuch.lanuch_id}` }}>
                             <Button variant="outline-info">Read more..</Button>
                           </Link>
                         </div>
@@ -131,8 +131,8 @@ const Rocketpage = (props) => {
         </div>
         ;
       </Container>
-    </Rocketstyle>
+    </Lanuchstyle>
   );
 };
 
-export default Rocketpage;
+export default Lanuchpage;

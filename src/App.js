@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 // PAGES
 import Rocketpage from "./pages/Rocket-page";
 import Rocketdetail from "./pages/Rocket-detail";
+import Lanuchespage from "./pages/Lanuches-page"
 
 function App() {
   return (
@@ -24,15 +25,17 @@ function App() {
       <div>
         <Navs />
         {/* <Banner />
-      <About />
-      <Rocket />
-      <Elon />
-      <Launch /> */}
+        <About />
+        <Rocket />
+        <Elon />
+        <Launch /> */}
         {/* <Rocketpage /> */}
         {/* <Rocketdetail /> */}
-        {/* <Footer /> */}
+
         <Route exact path="/rockets" component={Rocketpage} />
         <Route exact path="/rockets/:rocket_id" component={Rocketdetail} />
+        <Route exact path="/lanuches" component={Lanuchespage} />
+        <Footer />
       </div>
     </Router>
   );
