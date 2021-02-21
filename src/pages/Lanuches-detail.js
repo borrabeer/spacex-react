@@ -10,53 +10,59 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory, useParams } from "react-router-dom";
 const Lanuchstyle = styled.div`
-  .container-cus {
-    max-width: 1140px;
-    margin: 0 auto;
-  }
-
-  .banner-bg {
-    height: 80vh;
-    background-size: cover;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  .lanuchdetail-con {
+  .launchdetail-con {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    padding: 5rem 0;
     height: 100vh;
   }
 
-  .lanuchdetail-con > h1 {
-    font-size: 7rem;
+  .container-cus {
+    max-width: 1500px;
+    margin: 0 auto;
   }
 
-  .lanuchdetail-con > p {
-    font-size: 3rem;
+  .content-r > h1 {
+    font-size: 50px;
+  }
+
+  .content-r > p {
+    font-size: 20px;
   }
 
   .content-l img {
     width: 100%;
   }
 
+  .btn {
+    width: 80%;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #000;
+    border: 5px solid #000;
+    transition: all 0.3s ease-out;
+  }
+
   @media screen and (max-width: 960px) {
-    .lanuchdetail-con > h1 {
-      font-size: 5rem;
+    .content-r > h1 {
+      font-size: 40px;
     }
   }
 
   @media screen and (max-width: 768px) {
-    .lanuchdetail-con > h1 {
-      font-size: 4rem;
+    .content-r > h1 {
+      font-size: 30px;
     }
 
-    .lanuchdetail-con > p {
-      font-size: 1.5rem;
+    .content-r > p {
+      font-size: 20px;
     }
   }
 `;
@@ -73,7 +79,7 @@ const Lanuchesdetail = (props) => {
   }, []);
   return (
     <Lanuchstyle>
-      <div className="lanuchdetail-con">
+      <div className="launchdetail-con">
         <div className="container-cus">
           <Container>
             <Row>
@@ -85,25 +91,23 @@ const Lanuchesdetail = (props) => {
                 />
               </Col>
               <Col xs={12} md={6} className="content-r my-3">
-                <h1 className="text-uppercase font-weight-bolder">
-                  1
-                </h1>
+                <h1 className="text-uppercase font-weight-bolder">1</h1>
                 <h3 className="text-uppercase">1</h3>
-                <h5 className="text-uppercase font-weight-light">
-                 1
-                </h5>
+                <h5 className="text-uppercase font-weight-light">1</h5>
                 <p>1</p>
               </Col>
             </Row>
-            <Button
-              className="p-3 btn btn-outline"
-              size="lg"
-              onClick={() => history.goBack()}
-            >
-              BACK
-            </Button>
           </Container>
         </div>
+      </div>
+      <div className="text-center">
+        <Button
+          className="p-3 btn btn-outline my-5"
+          size="lg"
+          onClick={() => history.goBack()}
+        >
+          BACK
+        </Button>
       </div>
     </Lanuchstyle>
   );
