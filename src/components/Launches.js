@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
-import Background from "../img/lanuch-banner.jpg";
+import Background from "../img/launch-banner.jpg";
 
 import styled from "styled-components";
-const Lanuchstyle = styled.div`
-  .Lanuch-bg {
+const Launchstyle = styled.div`
+  .Launch-bg {
     height: 100vh;
     background-size: cover;
     overflow: hidden;
     background-repeat: no-repeat;
     background-position: center;
   }
-  .Lanuch-con {
+  .Launch-con {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -22,11 +22,11 @@ const Lanuchstyle = styled.div`
     object-fit: contain;
   }
 
-  .Lanuch-con > h1 {
+  .Launch-con > h1 {
     font-size: 60px;
   }
 
-  .Lanuch-con > p {
+  .Launch-con > p {
     font-size: 25px;
   }
 
@@ -50,17 +50,17 @@ const Lanuchstyle = styled.div`
   }
 
   @media screen and (max-width: 960px) {
-    .Lanuch-con > h1 {
+    .Launch-con > h1 {
       font-size: 40px;
     }
   }
 
   @media screen and (max-width: 768px) {
-    .Lanuch-con > h1 {
+    .Launch-con > h1 {
       font-size: 30px;
     }
 
-    .Lanuch-con > p {
+    .Launch-con > p {
       font-size: 20px;
     }
 
@@ -71,17 +71,17 @@ const Lanuchstyle = styled.div`
   }
 `;
 
-class Lanuch extends Component {
+class Launch extends Component {
   render() {
     return (
-      <Lanuchstyle>
+      <Launchstyle>
         <div
-          className="Lanuch-bg"
+          className="Launch-bg"
           style={{ backgroundImage: `url(${Background})` }}
         >
           <Container>
-            <div className="Lanuch-con text-light">
-              <h1 className="text-uppercase">Lanuches</h1>
+            <div className="Launch-con text-light">
+              <h1 className="text-uppercase">Launches</h1>
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.
@@ -94,9 +94,9 @@ class Lanuch extends Component {
             </div>
           </Container>
         </div>
-      </Lanuchstyle>
+      </Launchstyle>
     );
   }
 }
 
-export default Lanuch;
+export default Launch;

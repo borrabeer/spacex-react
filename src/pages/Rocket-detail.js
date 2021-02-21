@@ -6,6 +6,10 @@ import Button from "react-bootstrap/Button";
 import Background from "../img/rocket.png";
 
 import styled from "styled-components";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { Link, useHistory, useParams } from "react-router-dom";
 const Rocketstyle = styled.div`
   .container-cus {
     max-width: 1140px;
@@ -97,44 +101,52 @@ const Rocketstyle = styled.div`
   }
 `;
 
-class Rocketdetail extends Component {
-  render() {
-    return (
-      <Rocketstyle>
-        <div className="rocketdetail-con">
-          <div className="container-cus">
-            <Container>
-              <Row>
-                <Col xs={12} md={6} className="content-l my-3">
-                  <img src={Background} />
-                </Col>
-                <Col xs={12} md={6} className="content-r my-3">
-                  <h1 className="text-uppercase font-weight-bolder">NAME</h1>
-                  <h3 className="text-uppercase">NAME</h3>
-                  <h5 className="text-uppercase font-weight-light">NAME</h5>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, and more recently with desktop publishing software
-                    like Aldus PageMaker including versions of Lorem Ipsum.
-                  </p>
-                </Col>
-              </Row>
-              <Button className="p-3 btn btn-outline" size="lg">
-                BACK
-              </Button>
-            </Container>
-          </div>
-        </div>
-      </Rocketstyle>
+const Rocketdetail = (props) => {
+  const [detail, setDetail] = useState({});
+  let { rocket_id } = useParams();
+  const history = useHistory();
+  useEffect(async () => {
+    const detail = await axios.get(
+      `https://api.spacexdata.com/v3/rockets/${rocket_id}`
     );
-  }
-}
+    setDetail(detail.data);
+  }, []);
+  return (
+    <Rocketstyle>
+      <div className="rocketdetail-con">
+        <div className="container-cus">
+          <Container>
+            <Row>
+              <Col xs={12} md={6} className="content-l my-3">
+                <img
+                  src={
+                    detail.flickr_images ? detail.flickr_images[0] : Background
+                  }
+                />
+              </Col>
+              <Col xs={12} md={6} className="content-r my-3">
+                <h1 className="text-uppercase font-weight-bolder">
+                  {detail.rocket_name}
+                </h1>
+                <h3 className="text-uppercase">{detail.company}</h3>
+                <h5 className="text-uppercase font-weight-light">
+                  {detail.country}
+                </h5>
+                <p>{detail.description}</p>
+              </Col>
+            </Row>
+            <Button
+              className="p-3 btn btn-outline"
+              size="lg"
+              onClick={() => history.goBack()}
+            >
+              BACK
+            </Button>
+          </Container>
+        </div>
+      </div>
+    </Rocketstyle>
+  );
+};
 
 export default Rocketdetail;

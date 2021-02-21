@@ -100,7 +100,7 @@ class Banner extends Component {
                       className="m-3 p-3 btn btn-outline"
                       size="lg"
                     >
-                      LANUCHES
+                      LAUNCHES
                     </Button>
                   </div>
                 </div>

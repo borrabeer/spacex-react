@@ -1,42 +1,12 @@
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM from "react-dom";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import App from './App';
 
-// NAVIGATION
-import Navs from "./components/Nav";
-
-// COMPONENTS
-import Banner from "./components/Banner";
-import About from "./components/About";
-import Rocket from "./components/Rocket";
-import Elon from "./components/Elon";
-import Lanuch from "./components/Lanuches";
-
-// FOOTER
-import Footer from "./components/Footer";
-
-// PAGES
-import Rocketpage from "./pages/Rocket-page";
-import Rocketdetail from "./pages/Rocket-detail";
-const App = () => (
-  <div>
-    <Navs />
-    {/* <Banner />
-    <About />
-    <Rocket />
-    <Elon />
-    <Lanuch /> */}
-    {/* <Rocketpage /> */}
-    <Rocketdetail />
-    <Footer />
-  </div>
-);
-
-render(
-  <Router>
+ReactDOM.render(
+  <React.StrictMode>
     <App />
-  </Router>,
-  document.getElementById("root")
+  </React.StrictMode>,
+  document.getElementById('root')
 );
