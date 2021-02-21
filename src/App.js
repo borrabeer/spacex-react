@@ -17,7 +17,8 @@ import Footer from "./components/Footer";
 // PAGES
 import Rocketpage from "./pages/Rocket-page";
 import Rocketdetail from "./pages/Rocket-detail";
-import Lanuchespage from "./pages/Lanuches-page"
+import Launchespage from "./pages/Launches-page"
+import Launchesdetail from "./pages/Launches-detail"
 
 function App() {
   return (
@@ -27,14 +28,15 @@ function App() {
         {/* <Banner />
         <About />
         <Rocket />
-        <Elon />
-        <Launch /> */}
+        <Elon /> */}
+        {/* <Launch /> */}
         {/* <Rocketpage /> */}
         {/* <Rocketdetail /> */}
 
         <Route exact path="/rockets" component={Rocketpage} />
         <Route exact path="/rockets/:rocket_id" component={Rocketdetail} />
-        <Route exact path="/lanuches" component={Lanuchespage} />
+        <Route exact path="/launches" component={Launchespage} />
+        <Route exact path="/launches/:flight_number" component={Launchesdetail} />
         <Footer />
       </div>
     </Router>

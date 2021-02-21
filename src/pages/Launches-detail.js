@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory, useParams } from "react-router-dom";
-const Lanuchstyle = styled.div`
+const Launchstyle = styled.div`
   .launchdetail-con {
     display: flex;
     align-items: center;
@@ -67,18 +67,19 @@ const Lanuchstyle = styled.div`
   }
 `;
 
-const Lanuchesdetail = (props) => {
+const Launchesdetail = (props) => {
   const [detail, setDetail] = useState({});
-  let { lanuch_id } = useParams();
+  let { flight_number } = useParams();
   const history = useHistory();
   useEffect(async () => {
     const detail = await axios.get(
-      `https://api.spacexdata.com/v3/lanuchs/${lanuch_id}`
+      `https://api.spacexdata.com/v3/launches/${flight_number}`
     );
+    console.log(flight_number)
     setDetail(detail.data);
   }, []);
   return (
-    <Lanuchstyle>
+    <Launchstyle>
       <div className="launchdetail-con">
         <div className="container-cus">
           <Container>
@@ -91,10 +92,9 @@ const Lanuchesdetail = (props) => {
                 />
               </Col>
               <Col xs={12} md={6} className="content-r my-3">
-                <h1 className="text-uppercase font-weight-bolder">1</h1>
-                <h3 className="text-uppercase">1</h3>
-                <h5 className="text-uppercase font-weight-light">1</h5>
-                <p>1</p>
+                <h1 className="text-uppercase font-weight-bolder">{detail.mission_name}</h1>
+                <h5 className="text-uppercase font-weight-light">{new Date(detail.launch_date_unix * 1000).toLocaleString("en-US", {timeZoneName: "short"})}</h5>
+                <p>{detail.details}</p>
               </Col>
             </Row>
           </Container>
@@ -109,8 +109,8 @@ const Lanuchesdetail = (props) => {
           BACK
         </Button>
       </div>
-    </Lanuchstyle>
+    </Launchstyle>
   );
 };
 
-export default Lanuchesdetail;
+export default Launchesdetail;

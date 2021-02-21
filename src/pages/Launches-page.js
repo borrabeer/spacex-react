@@ -10,7 +10,7 @@ import styled from "styled-components";
 import { Link, useRouteMatch } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-const Lanuchstyle = styled.div`
+const Launchstyle = styled.div`
   .banner-bg {
     height: 80vh;
     background-size: cover;
@@ -27,7 +27,7 @@ const Lanuchstyle = styled.div`
     background-position: center;
   }
 
-  .lanuchpage-con {
+  .launchpage-con {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +36,7 @@ const Lanuchstyle = styled.div`
     height: 80vh;
   }
 
-  .lanuch-card {
+  .launch-card {
     padding: 5rem 0;
   }
 
@@ -44,40 +44,41 @@ const Lanuchstyle = styled.div`
     margin: 0;
   }
 
-  .lanuchpage-con > h1 {
+  .launchpage-con > h1 {
     font-size: 7rem;
   }
 
-  .lanuchpage-con > p {
+  .launchpage-con > p {
     font-size: 3rem;
   }
 
   @media screen and (max-width: 960px) {
-    .lanuchpage-con > h1 {
+    .launchpage-con > h1 {
       font-size: 5rem;
     }
   }
 
   @media screen and (max-width: 768px) {
-    .lanuchpage-con > h1 {
+    .launchpage-con > h1 {
       font-size: 4rem;
     }
 
-    .lanuchpage-con > p {
+    .launchpage-con > p {
       font-size: 1.5rem;
     }
   }
 `;
 
-const Lanuchpage = (props) => {
-  const [lanuchs, setLanuchs] = useState([]);
+const Launchpage = (props) => {
+  const [launchs, setLaunchs] = useState([]);
   let { path, url } = useRouteMatch();
   useEffect(async () => {
-    const lanuchs = await axios.get("https://api.spacexdata.com/v3/launches");
-    setLanuchs(lanuchs.data);
+    const launchs = await axios.get("https://api.spacexdata.com/v3/launches");
+    console.log(launchs.data)
+    setLaunchs(launchs.data);
   }, []);
   return (
-    <Lanuchstyle>
+    <Launchstyle>
       <Jumbotron
         fluid
         className="banner-bg"
@@ -86,7 +87,7 @@ const Lanuchpage = (props) => {
         }}
       >
         <Container>
-          <div className="lanuchpage-con text-light text-uppercase">
+          <div className="launchpage-con text-light text-uppercase">
             <h1>LAUNCHES</h1>
           </div>
         </Container>
@@ -128,11 +129,11 @@ const Lanuchpage = (props) => {
             </Form.Row>
           </Form>
         </Card>
-        <div className="lanuch-card">
+        <div className="launch-card">
           <Container>
             <Row>
               <div className="m-3 d-flex flex-wrap">
-                {lanuchs.map((lanuch) => {
+                {launchs.map((launch) => {
                   return (
                     <Col
                       className="w-100 p-3 d-flex flex-column"
@@ -140,21 +141,21 @@ const Lanuchpage = (props) => {
                       md={6}
                       lg={4}
                     >
-                      <div className="bg-white rounded-lg shadow-lg overflow-hidden d-flex flex-column h-100">
+                      <div className="bg-white rounded-lg shadow-lg overflow-hidden d-flex flex-column h-100" key={launch.flight_number}>
                         <div
                           className="banner-card"
                           style={{
-                            //backgroundImage: `url(${})`,
+                            backgroundImage: `url(${launch.flickr_images ? launch.flickr_images[0] : Background})`,
                             backgroundSize: "cover",
                           }}
                         ></div>
                         <div className="p-4 d-flex flex-column">
-                          <h3 className="mb-4">title</h3>
+                          <h3 className="mb-4">{launch.mission_name}</h3>
                           <div className="mb-4 text-info d-flex">
-                            <p>descrip</p>
+                            <p>{launch.details}</p>
                           </div>
                           <hr />
-                          <Link to={{ pathname: `${url}/${lanuch.lanuch_id}` }}>
+                          <Link to={{ pathname: `${url}/${launch.flight_number}` }}>
                             <Button variant="outline-info">Read more..</Button>
                           </Link>
                         </div>
@@ -168,8 +169,8 @@ const Lanuchpage = (props) => {
         </div>
         ;
       </Container>
-    </Lanuchstyle>
+    </Launchstyle>
   );
 };
 
-export default Lanuchpage;
+export default Launchpage;
