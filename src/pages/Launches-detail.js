@@ -72,6 +72,7 @@ const Launchesdetail = (props) => {
   const [detail, setDetail] = useState({});
   let { flight_number } = useParams();
   const history = useHistory();
+  
   useEffect(async () => {
     const detail = await axios.get(
       `https://api.spacexdata.com/v3/launches/${flight_number}`
@@ -85,7 +86,7 @@ const Launchesdetail = (props) => {
           <Container>
             <Row>
               <Col xs={12} md={6} className="content-l my-3">
-                <ReactPlayer url={detail.link ? detail.link.video_link : ""} />
+                <ReactPlayer url={detail.links ? detail.links.video_link : ""} />
               </Col>
               <Col xs={12} md={6} className="content-r my-3">
                 <h1 className="text-uppercase font-weight-bolder">{detail.mission_name}</h1>
