@@ -10,13 +10,16 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
+import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
+
 const Launchstyle = styled.div`
   .launchdetail-con {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 5rem 0;
-    height: 100vh;
+    background: #f0f0f0;
+    
   }
 
   .container-cus {
@@ -30,10 +33,6 @@ const Launchstyle = styled.div`
 
   .content-r > p {
     font-size: 20px;
-  }
-
-  .content-l img {
-    width: 100%;
   }
 
   .btn {
@@ -72,7 +71,6 @@ const Launchesdetail = (props) => {
   const [detail, setDetail] = useState({});
   let { flight_number } = useParams();
   const history = useHistory();
-  
   useEffect(async () => {
     const detail = await axios.get(
       `https://api.spacexdata.com/v3/launches/${flight_number}`
@@ -81,21 +79,37 @@ const Launchesdetail = (props) => {
   }, []);
   return (
     <Launchstyle>
-      <div className="launchdetail-con">
-        <div className="container-cus">
-          <Container>
-            <Row>
-              <Col xs={12} md={6} className="content-l my-3">
-                <ReactPlayer url={detail.links ? detail.links.video_link : ""} />
-              </Col>
-              <Col xs={12} md={6} className="content-r my-3">
-                <h1 className="text-uppercase font-weight-bolder">{detail.mission_name}</h1>
-                <h5 className="text-uppercase font-weight-light">{new Date(detail.launch_date_unix * 1000).toLocaleString("en-US", {timeZoneName: "short"})}</h5>
-                <p>{detail.details}</p>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+      <div className="launchdetail-con py-5">
+        <Container className="px-3">
+          <div className="content-l mb-5 ">
+            <ReactPlayer
+              url={detail.links ? detail.links.video_link : ""}
+              width="100%"
+              height="50vh"
+            />
+          </div>
+          <div className="content-r my-5">
+            <h1
+              className="text-uppercase font-weight-bolder"
+              style={{ textDecoration: "underline" }}
+            >
+              {detail.mission_name}
+            </h1>
+            <h5 className="text-uppercase font-weight-bolder my-4">
+              LANUCH DATE:{" "}
+              {new Date(detail.launch_date_unix * 1000).toLocaleString(
+                "en-US",
+                { timeZoneName: "short" }
+              )}
+            </h5>
+            <h5 className="text-uppercase font-weight-bolder my-3">
+              LAUNCH SUCCESS: {detail.launch_success ? "True" : "False"}
+            </h5>
+            <p className="my-4" style={{ lineHeight: 2 }}>
+              {detail.details}
+            </p>
+          </div>
+        </Container>
       </div>
       <div className="text-center">
         <Button

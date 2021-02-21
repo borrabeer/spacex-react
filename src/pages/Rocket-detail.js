@@ -16,7 +16,7 @@ const Rocketstyle = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5rem 0;
-    height: 100vh;
+    background: #f0f0f0;
   }
 
   .container-cus {
@@ -80,25 +80,26 @@ const Rocketdetail = (props) => {
   }, []);
   return (
     <Rocketstyle>
-      <div className="rocketdetail-con mx-3">
-        <div className="container-cus">
+      <div className="rocketdetail-con px-3">
+        <div className="container-cus py-3">
           <Row>
-            <Col xs={12} md={6} className="content-l">
+            <Col xs={12} md={6} className="content-l mb-5">
               <img
+              className="shadow-lg rounded"
                 src={
                   detail.flickr_images ? detail.flickr_images[0] : Background
                 }
               />
             </Col>
-            <Col xs={12} md={6} className="content-r">
-              <h1 className="text-uppercase font-weight-bolder">
+            <Col xs={12} md={6} className="content-r px-5">
+              <h1 className="text-uppercase font-weight-bolder" style={{textDecoration: "underline"}}>
                 {detail.rocket_name}
               </h1>
-              <h3 className="text-uppercase">{detail.company}</h3>
-              <h5 className="text-uppercase font-weight-light">
-                {detail.country}
+              <h5 className="text-uppercase font-weight-bolder my-3">COMPANY: {detail.company}</h5>
+              <h5 className="text-uppercase font-weight-bolder my-3">
+                COUNTRY: {detail.country}
               </h5>
-              <p>{detail.description}</p>
+              <p className="my-4" style={{lineHeight: 2}}>{detail.description}</p>
             </Col>
           </Row>
         </div>
