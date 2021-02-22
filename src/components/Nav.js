@@ -26,8 +26,8 @@ const Navs = () => {
     <Navbarstyle>
       <Navbar expand="lg" className="py-3" variant="light">
         <Container>
-          <Navbar.Brand to="/" className="title-nav text-dark">
-            <h2>SpaceX.</h2>
+          <Navbar.Brand to="/" className="title-nav ">
+            <h2 style={{color: "#000"}}>SpaceX.</h2>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
