@@ -291,7 +291,7 @@ const Launchpage = (props) => {
                             backgroundImage: `url(${
                               launch.links.mission_patch
                                 ? launch.links.mission_patch_small
-                                : Background
+                                : "/images/launch.jpg"
                             })`,
                             backgroundSize: "cover",
                           }}
