@@ -76,7 +76,7 @@ class Rocket extends Component {
       <Rocketstyle>
         <div
           className="Rocket-bg"
-          style={{ backgroundImage: `url("/images/rocket-banner.jpg")` }}
+          style={{ backgroundImage: `url("https://i.imgur.com/mw8G5oL.jpg")` }}
         >
           <Container>
             <div className="Rocket-con text-light">

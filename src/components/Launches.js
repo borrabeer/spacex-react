@@ -77,7 +77,7 @@ class Launch extends Component {
       <Launchstyle>
         <div
           className="Launch-bg"
-          style={{ backgroundImage: `url("/images/launch-banner.jpg")` }}
+          style={{ backgroundImage: `url("https://i.imgur.com/0r3Clb2.jpg")` }}
         >
           <Container>
             <div className="Launch-con text-light">

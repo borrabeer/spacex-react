@@ -48,7 +48,7 @@ class ElonBanner extends Component {
           <Container>
             <Row>
               <Col xs={12} md={6} className="content-l my-3">
-                <img src={"/images/elon.jpg"} />
+                <img src="https://i.imgur.com/s6ahnHn.jpg" />
               </Col>
               <Col xs={12} md={6} className="content-r my-3">
                 <h1 className="text-uppercase">DESCRIPTION </h1>

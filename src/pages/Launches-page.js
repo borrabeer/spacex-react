@@ -293,17 +293,25 @@ const Launchpage = (props) => {
                       <Card.Body>
                         <Card.Title>{launch.mission_name}</Card.Title>
                         <Card.Text>
-                          <div className="mb-4 text-info">
+                          <div
+                            className="mb-4 text-info"
+                            style={{
+                              textOverflow: "ellipsis",
+                              overflow: "hidden",
+                              whiteSpace: "nowrap"
+                            }}
+                          >
                             <p>{launch.details}</p>
                           </div>
                         </Card.Text>
-                        <hr />
+                      </Card.Body>
+                      <Card.Footer>
                         <Link
                           to={{ pathname: `${url}/${launch.flight_number}` }}
                         >
                           <Button variant="outline-info">Read more..</Button>
                         </Link>
-                      </Card.Body>
+                      </Card.Footer>
                     </Card>
                   );
                 })}

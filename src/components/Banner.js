@@ -78,7 +78,7 @@ class Banner extends Component {
       <Bannerstyle>
         <div
           className="banner-bg"
-          style={{ backgroundImage: `url("images/banner.jpg")` }}
+          style={{ backgroundImage: `url("https://i.imgur.com/78LinoI.jpg")`  }}
         >
           <Container>
             <Row>
