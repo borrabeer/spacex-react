@@ -41,7 +41,6 @@ const Navs = () => {
                 <h5>HOME</h5>
               </NavLink>
               <NavLink
-                exact
                 className="mx-3 text-dark inactive px-3 py-2"
                 activeClassName="active"
                 to="/rockets"
@@ -49,7 +48,6 @@ const Navs = () => {
                 <h5>ROCKETS</h5>
               </NavLink>
               <NavLink
-                exact
                 className="mx-3 text-dark inactive px-3 py-2"
                 activeClassName="active"
                 to="/launches"
