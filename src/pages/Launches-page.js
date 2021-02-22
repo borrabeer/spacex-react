@@ -4,7 +4,6 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
-import Background from "../img/launch.jpg";
 import axios from "axios";
 import styled from "styled-components";
 import { Link, useRouteMatch } from "react-router-dom";
@@ -188,7 +187,7 @@ const Launchpage = (props) => {
         fluid
         className="banner-bg"
         style={{
-          backgroundImage: `url(${Background})`,
+          backgroundImage: `url("/images/launch.jpg")`,
         }}
       >
         <Container>

@@ -4,7 +4,6 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
-import Background from "../img/rocket.png";
 import axios from "axios";
 import styled from "styled-components";
 import { Link, useRouteMatch } from "react-router-dom";
@@ -80,7 +79,7 @@ const Rocketpage = (props) => {
         fluid
         className="banner-bg"
         style={{
-          backgroundImage: `url(${Background})`,
+          backgroundImage: `url("/images/rocket.png")`,
         }}
       >
         <Container>

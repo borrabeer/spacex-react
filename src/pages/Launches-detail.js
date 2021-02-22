@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Background from "../img/rocket.png";
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container, Button } from "react-bootstrap";
-import Background from "../img/rocket-banner.jpg";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
@@ -77,7 +76,7 @@ class Rocket extends Component {
       <Rocketstyle>
         <div
           className="Rocket-bg"
-          style={{ backgroundImage: `url(${Background})` }}
+          style={{ backgroundImage: `url("/images/rocket-banner.jpg")` }}
         >
           <Container>
             <div className="Rocket-con text-light">

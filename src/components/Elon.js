@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Elon from "../img/elon.jpg";
 
 import styled from "styled-components";
 const Elonstyle = styled.div`
@@ -49,7 +48,7 @@ class ElonBanner extends Component {
           <Container>
             <Row>
               <Col xs={12} md={6} className="content-l my-3">
-                <img src={Elon} />
+                <img src={"/images/elon.jpg"} />
               </Col>
               <Col xs={12} md={6} className="content-r my-3">
                 <h1 className="text-uppercase">DESCRIPTION </h1>

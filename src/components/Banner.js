@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Background from "../img/banner.jpg";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
@@ -79,7 +78,7 @@ class Banner extends Component {
       <Bannerstyle>
         <div
           className="banner-bg"
-          style={{ backgroundImage: `url(${Background})` }}
+          style={{ backgroundImage: `url("images/banner.jpg")` }}
         >
           <Container>
             <Row>

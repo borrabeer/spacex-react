@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Background from "../img/rocket.png";
 
 import styled from "styled-components";
 import { useState } from "react";
@@ -87,7 +86,7 @@ const Rocketdetail = (props) => {
               <img
               className="shadow-lg rounded"
                 src={
-                  detail.flickr_images ? detail.flickr_images[0] : Background
+                  detail.flickr_images ? detail.flickr_images[0] : "/images/rocket.png"
                 }
               />
             </Col>

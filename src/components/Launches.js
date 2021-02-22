@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import Background from "../img/launch-banner.jpg";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
@@ -78,7 +77,7 @@ class Launch extends Component {
       <Launchstyle>
         <div
           className="Launch-bg"
-          style={{ backgroundImage: `url(${Background})` }}
+          style={{ backgroundImage: `url("/images/launch-banner.jpg")` }}
         >
           <Container>
             <div className="Launch-con text-light">
