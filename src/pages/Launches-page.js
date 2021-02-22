@@ -274,42 +274,37 @@ const Launchpage = (props) => {
         <div className="launch-card">
           <Container>
             <Row>
-              <div className="m-3 d-flex flex-wrap">
+              <div className="text-center d-flex flex-wrap">
                 {filterLaunchs.map((launch) => {
                   return (
-                    <Col
-                      className="w-100 p-3 d-flex flex-column"
-                      xs={12}
-                      md={6}
-                      lg={4}
-                      key={launch.mission_name}
-                    >
-                      <div className="bg-white rounded-lg shadow-lg overflow-hidden d-flex flex-column h-100">
-                        <div
-                          className="banner-card"
-                          style={{
-                            backgroundImage: `url(${
-                              launch.links.mission_patch
-                                ? launch.links.mission_patch_small
-                                : "/images/launch.jpg"
-                            })`,
-                            backgroundSize: "cover",
-                          }}
-                        ></div>
-                        <div className="p-4 d-flex flex-column">
-                          <h3 className="mb-4">{launch.mission_name}</h3>
-                          <div className="mb-4 text-info d-flex">
+                    <Card className="m-3" style={{ width: "18rem" }}>
+                      <Card.Img
+                        className="banner-card"
+                        variant="top"
+                        style={{
+                          backgroundImage: `url(${
+                            launch.links.mission_patch
+                              ? launch.links.mission_patch_small
+                              : "/images/launch.jpg"
+                          })`,
+                          backgroundSize: "cover",
+                        }}
+                      />
+                      <Card.Body>
+                        <Card.Title>{launch.mission_name}</Card.Title>
+                        <Card.Text>
+                          <div className="mb-4 text-info">
                             <p>{launch.details}</p>
                           </div>
-                          <hr />
-                          <Link
-                            to={{ pathname: `${url}/${launch.flight_number}` }}
-                          >
-                            <Button variant="outline-info">Read more..</Button>
-                          </Link>
-                        </div>
-                      </div>
-                    </Col>
+                        </Card.Text>
+                        <hr />
+                        <Link
+                          to={{ pathname: `${url}/${launch.flight_number}` }}
+                        >
+                          <Button variant="outline-info">Read more..</Button>
+                        </Link>
+                      </Card.Body>
+                    </Card>
                   );
                 })}
               </div>
