@@ -1,15 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams, useRouteMatch } from "react-router-dom";
 import ReactPlayer from "react-player";
-import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 
 const Launchstyle = styled.div`
   .launchdetail-con {
@@ -18,7 +15,6 @@ const Launchstyle = styled.div`
     justify-content: center;
     padding: 5rem 0;
     background: #f0f0f0;
-    
   }
 
   .container-cus {
@@ -70,6 +66,7 @@ const Launchesdetail = (props) => {
   const [detail, setDetail] = useState({});
   let { flight_number } = useParams();
   const history = useHistory();
+  let { path, url } = useRouteMatch();
   useEffect(async () => {
     const detail = await axios.get(
       `https://api.spacexdata.com/v3/launches/${flight_number}`
@@ -94,6 +91,12 @@ const Launchesdetail = (props) => {
             >
               {detail.mission_name}
             </h1>
+            <h3 className="text-uppercase font-weight-bolder">
+              ROCKET:{" "}
+              <Link to={`/rockets/${detail.rocket?.rocket_id}`}>
+                {detail.rocket?.rocket_name}
+              </Link>
+            </h3>
             <h5 className="text-uppercase font-weight-bolder my-4">
               LANUCH DATE:{" "}
               {new Date(detail.launch_date_unix * 1000).toLocaleString(

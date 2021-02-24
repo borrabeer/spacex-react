@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -70,30 +70,28 @@ const Rocketstyle = styled.div`
   }
 `;
 
-class Rocket extends Component {
-  render() {
-    return (
-      <Rocketstyle>
-        <div
-          className="Rocket-bg"
-          style={{ backgroundImage: `url("https://i.imgur.com/mw8G5oL.jpg")` }}
-        >
-          <Container>
-            <div className="Rocket-con text-light">
-              <h1 className="text-uppercase">ROCKETS</h1>
-              <div className="button-sec button-mb mt-3 ">
-                <Link to="/rockets">
-                  <Button className="p-3 btn btn-outline" size="lg">
-                    LEARN MORE
-                  </Button>
-                </Link>
-              </div>
+const Rocket = (props) => {
+  return (
+    <Rocketstyle>
+      <div
+        className="Rocket-bg"
+        style={{ backgroundImage: `url("https://i.imgur.com/mw8G5oL.jpg")` }}
+      >
+        <Container>
+          <div className="Rocket-con text-light">
+            <h1 className="text-uppercase">ROCKETS</h1>
+            <div className="button-sec button-mb mt-3 ">
+              <Link to="/rockets">
+                <Button className="p-3 btn btn-outline" size="lg">
+                  LEARN MORE
+                </Button>
+              </Link>
             </div>
-          </Container>
-        </div>
-      </Rocketstyle>
-    );
-  }
-}
+          </div>
+        </Container>
+      </div>
+    </Rocketstyle>
+  );
+};
 
 export default Rocket;

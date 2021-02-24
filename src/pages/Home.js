@@ -1,22 +1,24 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 // COMPONENTS
-import Banner from "../components/Banner";
-import About from "../components/About";
-import Rocket from "../components/Rocket";
-import Elon from "../components/Elon";
-import Launch from "../components/Launches";
+const Banner = React.lazy(() => import("../components/Banner"));
+const About = React.lazy(() => import("../components/About"));
+const Rocket = React.lazy(() => import("../components/Rocket"));
+const Elon = React.lazy(() => import("../components/Elon"));
+const Launch = React.lazy(() => import("../components/Launches"));
 
 const Home = () => {
   return (
     <div>
-      <Banner />
-      <About />
-      <Rocket />
-      <Elon />
-      <Launch />
+      <Suspense fallback={<div>Loading . . .</div>}>
+        <Banner />
+        <About />
+        <Rocket />
+        <Elon />
+        <Launch />
+      </Suspense>
     </div>
   );
-}
+};
 
 export default Home;

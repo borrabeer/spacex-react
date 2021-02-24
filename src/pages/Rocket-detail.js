@@ -84,21 +84,30 @@ const Rocketdetail = (props) => {
           <Row>
             <Col xs={12} md={6} className="content-l mb-5">
               <img
-              className="shadow-lg rounded"
+                className="shadow-lg rounded"
                 src={
-                  detail.flickr_images ? detail.flickr_images[0] : "/images/rocket.png"
+                  detail.flickr_images
+                    ? detail.flickr_images[0]
+                    : "/images/rocket.png"
                 }
               />
             </Col>
             <Col xs={12} md={6} className="content-r px-5">
-              <h1 className="text-uppercase font-weight-bolder" style={{textDecoration: "underline"}}>
+              <h1
+                className="text-uppercase font-weight-bolder"
+                style={{ textDecoration: "underline" }}
+              >
                 {detail.rocket_name}
               </h1>
-              <h5 className="text-uppercase font-weight-bolder my-3">COMPANY: {detail.company}</h5>
+              <h5 className="text-uppercase font-weight-bolder my-3">
+                COMPANY: {detail.company}
+              </h5>
               <h5 className="text-uppercase font-weight-bolder my-3">
                 COUNTRY: {detail.country}
               </h5>
-              <p className="my-4" style={{lineHeight: 2}}>{detail.description}</p>
+              <p className="my-4" style={{ lineHeight: 2 }}>
+                {detail.description}
+              </p>
             </Col>
           </Row>
         </div>

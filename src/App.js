@@ -1,28 +1,37 @@
+import React, { Suspense } from "react";
+import { Route, BrowserRouter as Router } from "react-router-dom";
+
 // NAVIGATION
-import Navs from "./components/Nav";
+const Navs = React.lazy(() => import("./components/Nav"));
 
 // FOOTER
-import Footer from "./components/Footer";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+const Footer = React.lazy(() => import("./components/Footer"));
 // PAGES
-import Home from "./pages/Home";
-import Rocketpage from "./pages/Rocket-page";
-import Rocketdetail from "./pages/Rocket-detail";
-import Launchespage from "./pages/Launches-page";
-import Launchesdetail from "./pages/Launches-detail";
+const Home = React.lazy(() => import("./pages/Home"));
+const Rocketpage = React.lazy(() => import("./pages/Rocket-page"));
+const Rocketdetail = React.lazy(() => import("./pages/Rocket-detail"));
+const Launchespage = React.lazy(() => import("./pages/Launches-page"));
+const Launchesdetail = React.lazy(() => import("./pages/Launches-detail"));
+
 function App() {
   return (
     <Router>
       <div>
-        <Navs />
+        <Suspense fallback={<div>Loading . . .</div>}>
+          <Navs />
 
-        <Route exact path="/" component={Home} />
-        <Route exact path="/rockets" component={Rocketpage} />
-        <Route exact path="/rockets/:rocket_id" component={Rocketdetail} />
-        <Route exact path="/launches" component={Launchespage} />
-        <Route exact path="/launches/:flight_number" component={Launchesdetail} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/rockets" component={Rocketpage} />
+          <Route exact path="/rockets/:rocket_id" component={Rocketdetail} />
+          <Route exact path="/launches" component={Launchespage} />
+          <Route
+            exact
+            path="/launches/:flight_number"
+            component={Launchesdetail}
+          />
 
-        <Footer />
+          <Footer />
+        </Suspense>
       </div>
     </Router>
   );
